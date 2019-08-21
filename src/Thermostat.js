@@ -45,3 +45,24 @@ Thermostat.prototype.usage = function() {
     return "high-usage";
   }
 };
+
+let thermostat = new Thermostat();
+
+const addBtn = document.getElementById("up");
+const downBtn = document.getElementById("down");
+const usageBtn = document.getElementById("usage");
+const displayTemperature = document.getElementById("temperature");
+const displayUsage = document.getElementById("usage_display");
+
+displayTemperature.textContent = thermostat.temperature();
+addBtn.addEventListener("click", () => {
+  thermostat.up(1);
+  displayTemperature.textContent = thermostat.temperature();
+});
+downBtn.addEventListener("click", () => {
+  thermostat.down(1);
+  displayTemperature.textContent = thermostat.temperature();
+});
+usageBtn.addEventListener("click", () => {
+  displayUsage.textContent = thermostat.usage();
+});
