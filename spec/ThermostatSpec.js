@@ -20,4 +20,10 @@ describe("Thermostat", function() {
       thermostat.down(15);
     }).toThrowError("minimum temperature is 10 degrees");
   });
+  it("on saving mode max temp is 25 degrees", () => {
+    thermostat.savingMode = true;
+    expect(() => {
+      thermostat.up(15);
+    }).toThrowError("maximum temperature on saving mode is 25 degrees");
+  });
 });
