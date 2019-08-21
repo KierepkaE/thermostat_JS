@@ -1,3 +1,4 @@
+"use strict";
 describe("Thermostat", function() {
   let thermostat;
   beforeEach(function() {

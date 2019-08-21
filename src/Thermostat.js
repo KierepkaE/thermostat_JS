@@ -1,4 +1,5 @@
-let Thermostat = function() {
+"use strict";
+const Thermostat = function() {
   this._temperature = 20;
   this._savingMode = true;
 };
