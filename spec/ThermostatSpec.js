@@ -32,4 +32,7 @@ describe("Thermostat", function() {
       thermostat.up(20);
     }).toThrowError("maximum temperature not on saving mode is 32 degrees");
   });
+  it("has an power mode on as a default", () => {
+    expect(thermostat.savingMode).toBeTruthy();
+  });
 });
