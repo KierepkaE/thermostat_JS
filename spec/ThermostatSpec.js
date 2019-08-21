@@ -15,4 +15,9 @@ describe("Thermostat", function() {
     thermostat.down(5);
     expect(thermostat.temperature()).toEqual(15);
   });
+  it("doesnt allow to change temperature to lower than 10 degrees", () => {
+    expect(() => {
+      thermostat.down(15);
+    }).toThrowError("minimum temperature is 10 degrees");
+  });
 });
