@@ -35,4 +35,8 @@ describe("Thermostat", function() {
   it("has an power mode on as a default", () => {
     expect(thermostat.savingMode).toBeTruthy();
   });
+  it("can reset temperature to 20 degrees with reset function", () => {
+    thermostat.reset();
+    expect(thermostat.temperature()).toEqual(20);
+  });
 });
