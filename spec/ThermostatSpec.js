@@ -39,4 +39,17 @@ describe("Thermostat", function() {
     thermostat.reset();
     expect(thermostat.temperature()).toEqual(20);
   });
+  it("if temperature < 18 says the usage is low", () => {
+    thermostat.down(5);
+    expect(thermostat.usage()).toEqual("low-usage");
+  });
+  it("if temperature < 25 says the usage is medium", () => {
+    thermostat.up(2);
+    expect(thermostat.usage()).toEqual("medium-usage");
+  });
+  it("if temperature > 25 says the usage is high", () => {
+    thermostat.savingMode(false);
+    thermostat.up(6);
+    expect(thermostat.usage()).toEqual("high-usage");
+  });
 });
