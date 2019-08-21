@@ -22,13 +22,13 @@ describe("Thermostat", function() {
     }).toThrowError("minimum temperature is 10 degrees");
   });
   it("on saving mode max temp is 25 degrees", () => {
-    thermostat.savingMode(true);
+    thermostat.savingModeOn();
     expect(() => {
       thermostat.up(15);
     }).toThrowError("maximum temperature on saving mode is 25 degrees");
   });
   it("when not on saving mode max temp is 32 degrees", () => {
-    thermostat.savingMode(false);
+    thermostat.savingModeOff();
     expect(() => {
       thermostat.up(20);
     }).toThrowError("maximum temperature not on saving mode is 32 degrees");
@@ -49,7 +49,7 @@ describe("Thermostat", function() {
     expect(thermostat.usage()).toEqual("medium-usage");
   });
   it("if temperature > 25 says the usage is high", () => {
-    thermostat.savingMode(false);
+    thermostat.savingModeOff();
     thermostat.up(6);
     expect(thermostat.usage()).toEqual("high-usage");
   });

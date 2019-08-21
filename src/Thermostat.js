@@ -7,7 +7,7 @@ const Thermostat = function() {
 Thermostat.prototype.temperature = function() {
   return this._temperature;
 };
-Thermostat.prototype.up = function(number) {
+Thermostat.prototype.up = function(number = 1) {
   if (this._savingMode === true && this._temperature + number > 25) {
     throw new Error("maximum temperature on saving mode is 25 degrees");
     return;
@@ -18,10 +18,16 @@ Thermostat.prototype.up = function(number) {
   this._temperature += number;
 };
 
-Thermostat.prototype.savingMode = function(value) {
-  this._savingMode = value;
+Thermostat.prototype.savingMode = function() {
+  return this._savingMode;
 };
-Thermostat.prototype.down = function(number) {
+Thermostat.prototype.savingModeOn = function() {
+  this._savingMode = true;
+};
+Thermostat.prototype.savingModeOff = function() {
+  this._savingMode = false;
+};
+Thermostat.prototype.down = function(number = 1) {
   if (this._temperature - number < 10) {
     throw new Error("minimum temperature is 10 degrees");
   }
