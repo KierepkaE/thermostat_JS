@@ -7,10 +7,18 @@ Thermostat.prototype.temperature = function() {
   return this._temperature;
 };
 Thermostat.prototype.up = function(number) {
-  if (this._temperature + number > 25) {
+  if (this._savingMode === true && this._temperature + number > 25) {
     throw new Error("maximum temperature on saving mode is 25 degrees");
+    return;
+  } else if (this._savingMode === false && this._temperature + number > 32) {
+    throw new Error("maximum temperature not on saving mode is 32 degrees");
+    return;
   }
   this._temperature += number;
+};
+
+Thermostat.prototype.savingMode = function(value) {
+  this._savingMode = value;
 };
 Thermostat.prototype.down = function(number) {
   if (this._temperature - number < 10) {
